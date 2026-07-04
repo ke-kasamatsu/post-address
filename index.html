@@ -7,56 +7,64 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <div class="header">
-      <div class="icon">📮</div>
-      <h1>郵便番号検索</h1>
-      <p class="subtitle">郵便番号を入力して住所と天気を検索</p>
+  <div class="app">
+
+    <div class="app-header">
+      <h1>📮 郵便番号検索</h1>
+      <p>郵便番号から住所と天気を調べる</p>
     </div>
 
-    <div class="input-group">
-      <input
-        type="text"
-        id="zipInput"
-        placeholder="例：100-0001"
-        maxlength="8"
-        inputmode="numeric"
-      >
-      <button onclick="search()">検索</button>
-    </div>
+    <div class="search-card">
+      <div class="input-group">
+        <input
+          type="text"
+          id="zipInput"
+          placeholder="例：100-0001"
+          maxlength="8"
+          inputmode="numeric"
+        >
+        <button onclick="search()">検索</button>
+      </div>
 
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      検索中...
-    </div>
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        検索中...
+      </div>
 
-    <div class="error" id="error">
-      <span class="error-icon">⚠️</span>
-      <span id="errorMsg"></span>
+      <div class="error" id="error">
+        <span>⚠️</span>
+        <span id="errorMsg"></span>
+      </div>
     </div>
 
     <!-- 住所 -->
-    <div class="result" id="result">
-      <div class="result-row">
-        <span class="result-label">都道府県</span>
-        <span class="result-value" id="pref"></span>
+    <div class="address-card" id="result">
+      <div class="address-card-header">
+        <span>📍</span>
+        <span class="label">住所</span>
       </div>
-      <div class="result-row">
-        <span class="result-label">市区町村</span>
-        <span class="result-value" id="city"></span>
-      </div>
-      <div class="result-row">
-        <span class="result-label">町域</span>
-        <span class="result-value" id="town"></span>
+      <div class="address-rows">
+        <div class="address-row">
+          <span class="address-row-label">都道府県</span>
+          <span class="address-row-value" id="pref"></span>
+        </div>
+        <div class="address-row">
+          <span class="address-row-label">市区町村</span>
+          <span class="address-row-value" id="city"></span>
+        </div>
+        <div class="address-row">
+          <span class="address-row-label">町域</span>
+          <span class="address-row-value" id="town"></span>
+        </div>
       </div>
     </div>
 
     <!-- 天気 -->
-    <div class="weather" id="weather">
-      <div class="weather-header">
-        <span class="weather-title-icon">🌤</span>
-        <span class="weather-title">天気情報</span>
-        <span class="weather-city" id="weatherCity"></span>
+    <div class="weather-card" id="weather">
+      <div class="weather-card-header">
+        <span>🌤</span>
+        <span class="label">天気情報</span>
+        <span class="city-name" id="weatherCity"></span>
       </div>
 
       <div class="weather-loading" id="weatherLoading">
@@ -66,37 +74,37 @@
 
       <div class="weather-error" id="weatherError"></div>
 
-      <div class="weather-content" id="weatherContent">
+      <div class="weather-body" id="weatherContent">
         <div class="weather-main">
-          <div class="weather-icon-big" id="weatherIcon"></div>
-          <div class="weather-desc" id="weatherDesc"></div>
-          <div class="weather-temp-row">
-            <span class="weather-temp" id="weatherTemp"></span>
-            <span class="weather-temp-unit">°C</span>
+          <div class="weather-left">
+            <div class="weather-emoji" id="weatherIcon"></div>
+            <div class="weather-desc-text" id="weatherDesc"></div>
           </div>
-          <div class="weather-feels">体感 <span id="weatherFeels"></span>°C</div>
+          <div class="weather-right">
+            <div class="weather-temp-row">
+              <span class="weather-temp-num" id="weatherTemp"></span>
+              <span class="weather-temp-deg">°C</span>
+            </div>
+            <div class="weather-feels">体感 <span id="weatherFeels"></span>°C</div>
+          </div>
         </div>
 
-        <div class="weather-details">
-          <div class="weather-detail-item">
-            <span class="detail-icon">💧</span>
-            <span class="detail-label">湿度</span>
-            <span class="detail-value"><span id="weatherHumidity"></span>%</span>
+        <div class="weather-stats">
+          <div class="weather-stat">
+            <span class="stat-label">💧 湿度</span>
+            <span class="stat-value"><span id="weatherHumidity"></span>%</span>
           </div>
-          <div class="weather-detail-item">
-            <span class="detail-icon">💨</span>
-            <span class="detail-label">風速</span>
-            <span class="detail-value"><span id="weatherWind"></span> km/h</span>
+          <div class="weather-stat">
+            <span class="stat-label">💨 風速</span>
+            <span class="stat-value"><span id="weatherWind"></span> km/h</span>
           </div>
-          <div class="weather-detail-item">
-            <span class="detail-icon">🌡</span>
-            <span class="detail-label">最高</span>
-            <span class="detail-value"><span id="weatherTempMax"></span>°C</span>
+          <div class="weather-stat">
+            <span class="stat-label">🌡 最高気温</span>
+            <span class="stat-value"><span id="weatherTempMax"></span>°C</span>
           </div>
-          <div class="weather-detail-item">
-            <span class="detail-icon">🌡</span>
-            <span class="detail-label">最低</span>
-            <span class="detail-value"><span id="weatherTempMin"></span>°C</span>
+          <div class="weather-stat">
+            <span class="stat-label">🌡 最低気温</span>
+            <span class="stat-value"><span id="weatherTempMin"></span>°C</span>
           </div>
         </div>
       </div>
