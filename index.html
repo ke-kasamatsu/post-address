@@ -11,7 +11,7 @@
     <div class="header">
       <div class="icon">📮</div>
       <h1>郵便番号検索</h1>
-      <p class="subtitle">郵便番号を入力して住所を検索</p>
+      <p class="subtitle">郵便番号を入力して住所と天気を検索</p>
     </div>
 
     <div class="input-group">
@@ -30,6 +30,12 @@
       検索中...
     </div>
 
+    <div class="error" id="error">
+      <span class="error-icon">⚠️</span>
+      <span id="errorMsg"></span>
+    </div>
+
+    <!-- 住所 -->
     <div class="result" id="result">
       <div class="result-row">
         <span class="result-label">都道府県</span>
@@ -45,9 +51,55 @@
       </div>
     </div>
 
-    <div class="error" id="error">
-      <span class="error-icon">⚠️</span>
-      <span id="errorMsg"></span>
+    <!-- 天気 -->
+    <div class="weather" id="weather">
+      <div class="weather-header">
+        <span class="weather-title-icon">🌤</span>
+        <span class="weather-title">天気情報</span>
+        <span class="weather-city" id="weatherCity"></span>
+      </div>
+
+      <div class="weather-loading" id="weatherLoading">
+        <div class="spinner"></div>
+        天気を取得中...
+      </div>
+
+      <div class="weather-error" id="weatherError"></div>
+
+      <div class="weather-content" id="weatherContent">
+        <div class="weather-main">
+          <div class="weather-icon-big" id="weatherIcon"></div>
+          <div class="weather-desc" id="weatherDesc"></div>
+          <div class="weather-temp-row">
+            <span class="weather-temp" id="weatherTemp"></span>
+            <span class="weather-temp-unit">°C</span>
+          </div>
+          <div class="weather-feels">体感 <span id="weatherFeels"></span>°C</div>
+        </div>
+
+        <div class="weather-details">
+          <div class="weather-detail-item">
+            <span class="detail-icon">💧</span>
+            <span class="detail-label">湿度</span>
+            <span class="detail-value"><span id="weatherHumidity"></span>%</span>
+          </div>
+          <div class="weather-detail-item">
+            <span class="detail-icon">💨</span>
+            <span class="detail-label">風速</span>
+            <span class="detail-value"><span id="weatherWind"></span> km/h</span>
+          </div>
+          <div class="weather-detail-item">
+            <span class="detail-icon">🌡</span>
+            <span class="detail-label">最高</span>
+            <span class="detail-value"><span id="weatherTempMax"></span>°C</span>
+          </div>
+          <div class="weather-detail-item">
+            <span class="detail-icon">🌡</span>
+            <span class="detail-label">最低</span>
+            <span class="detail-value"><span id="weatherTempMin"></span>°C</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <p class="hint">ハイフンあり・なし、どちらでも検索できます</p>
