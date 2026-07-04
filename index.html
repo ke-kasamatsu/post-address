@@ -8,8 +8,11 @@
 </head>
 <body>
   <div class="card">
-    <h1>📮 郵便番号検索</h1>
-    <p class="subtitle">郵便番号を入力して住所を検索</p>
+    <div class="header">
+      <div class="icon">📮</div>
+      <h1>郵便番号検索</h1>
+      <p class="subtitle">郵便番号を入力して住所を検索</p>
+    </div>
 
     <div class="input-group">
       <input
@@ -22,18 +25,30 @@
       <button onclick="search()">検索</button>
     </div>
 
-    <div class="loading" id="loading">検索中...</div>
-
-    <div class="result" id="result">
-      <div class="result-label">都道府県</div>
-      <div class="result-value" id="pref"></div>
-      <div class="result-label">市区町村</div>
-      <div class="result-value" id="city"></div>
-      <div class="result-label">町域</div>
-      <div class="result-value" id="town"></div>
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      検索中...
     </div>
 
-    <div class="error" id="error"></div>
+    <div class="result" id="result">
+      <div class="result-row">
+        <span class="result-label">都道府県</span>
+        <span class="result-value" id="pref"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">市区町村</span>
+        <span class="result-value" id="city"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">町域</span>
+        <span class="result-value" id="town"></span>
+      </div>
+    </div>
+
+    <div class="error" id="error">
+      <span class="error-icon">⚠️</span>
+      <span id="errorMsg"></span>
+    </div>
 
     <p class="hint">ハイフンあり・なし、どちらでも検索できます</p>
   </div>

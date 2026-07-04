@@ -58,6 +58,6 @@ async function search() {
 function show(id) { document.getElementById(id).classList.add('visible'); }
 function hide(id) { document.getElementById(id).classList.remove('visible'); }
 function showError(msg) {
-  document.getElementById('error').textContent = msg;
+  document.getElementById('errorMsg').textContent = msg;
   show('error');
 }
